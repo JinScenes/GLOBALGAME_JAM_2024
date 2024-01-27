@@ -678,14 +678,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pushForce: 15
   pushCooldown: 2
+  reflectionDuration: 0.4
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
   pushRange: 2
   pushKey: 113
   reflectKey: 101
-  normalMaterial: {fileID: 0}
-  reflectingMaterial: {fileID: 0}
+  normalMaterial: {fileID: 2100000, guid: 25b724f472a3e9c4eb5e080fd071d4cf, type: 2}
+  reflectingMaterial: {fileID: 2100000, guid: 825ef015ec03b5c4ea513c280484b2d4, type: 2}
 --- !u!114 &597471760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1366,14 +1367,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pushForce: 5
   pushCooldown: 2
+  reflectionDuration: 0.4
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
   pushRange: 2
   pushKey: 48
   reflectKey: 49
-  normalMaterial: {fileID: 0}
-  reflectingMaterial: {fileID: 0}
+  normalMaterial: {fileID: 2100000, guid: 9d7f0458f6e3d8047aece2b2d28e9134, type: 2}
+  reflectingMaterial: {fileID: 2100000, guid: 825ef015ec03b5c4ea513c280484b2d4, type: 2}
 --- !u!114 &2076842031
 MonoBehaviour:
   m_ObjectHideFlags: 0
