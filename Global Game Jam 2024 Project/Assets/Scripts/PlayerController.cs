@@ -2,18 +2,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float jumpForce;
-    public float movementSpeed;
-    public bool isPlayer1 = true;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private bool isPlayer1 = true;
+
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask passThroughLayer;
 
     private Rigidbody rb;
 
     private string horizontalInputAxis;
     private string jumpInputAxis;
+    private string downInputAxis;
 
     private int jumpCount = 0;
-    private bool canJump = true;
     private bool isGrounded = false;
+    private bool canJump = true;
 
     private float jumpCooldown = 0.3f;
     private float lastJumpTime;
@@ -29,17 +33,21 @@ public class PlayerController : MonoBehaviour
         {
             horizontalInputAxis = "Horizontal_P1";
             jumpInputAxis = "Jump_P1";
+            downInputAxis = "Down_P1";
         }
         else
         {
             horizontalInputAxis = "Horizontal_P2";
             jumpInputAxis = "Jump_P2";
+            downInputAxis = "Down_P2";
         }
+        gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     private void Update()
     {
         HandleJumpInput();
+        HandlePassThroughPlatform();
     }
 
     private void FixedUpdate()
@@ -62,6 +70,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void HandlePassThroughPlatform()
+    {
+        if (Input.GetAxis(downInputAxis) < 0)
+        {
+            gameObject.layer = LayerMask.NameToLayer("PassThrough");
+        }
+        else
+        {
+            gameObject.layer = LayerMask.NameToLayer("Player");
+        }
+    }
+
     private void HandleMovement()
     {
         float horizontalInput = Input.GetAxis(horizontalInputAxis);
@@ -72,8 +92,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            isGrounded = true;
             canJump = true;
+            isGrounded = true;
             jumpCount = 0;
         }
     }
