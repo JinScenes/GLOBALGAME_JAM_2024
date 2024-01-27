@@ -9,6 +9,7 @@ public abstract class  Skill : MonoBehaviour
 
     public GameObject player;
     public GameObject enemyPlayer;
+    public GameObject skillStuff;
 
     public abstract void UseSkill();
 
@@ -20,13 +21,14 @@ public abstract class  Skill : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
             currentCD-=0.1f;
-            print("TIck " + currentCD);
+            //print("TIck " + currentCD);
         }
 
     }
 
     public void SetValues()
     {
+
         player = gameObject;
         foreach (GameObject plr in GameObject.FindGameObjectsWithTag("Player"))
         {
@@ -36,5 +38,8 @@ public abstract class  Skill : MonoBehaviour
                 enemyPlayer = plr;
             }
         }
+
+        skillStuff = GameObject.Find("SkillStuff");
+
     }
 }

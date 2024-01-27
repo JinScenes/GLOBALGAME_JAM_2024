@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlayerController : MonoBehaviour
+public class Phase1PlayerController : MonoBehaviour
 {
     [SerializeField] public int playerNum;
     [SerializeField] public float moveSpeed = 7.0f;

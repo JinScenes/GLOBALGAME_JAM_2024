@@ -86,6 +86,16 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis(horizontalInputAxis);
         rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, rb.velocity.z);
+
+
+        if (horizontalInput > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 90, 0);
+        }
+        else if (horizontalInput < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, -90, 0);
+        }
     }
 
     private void OnCollisionEnter(Collision other)

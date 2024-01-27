@@ -37,7 +37,7 @@ public class Inventory : MonoBehaviour
             if (string.IsNullOrEmpty(playerArray[i]))
             {
                 playerArray[i] = item;
-                Debug.Log("Item added: " + item);
+                //Debug.Log("Item added: " + item);
                 return;
             }
         }
@@ -56,15 +56,26 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+
+        AddItem("Mario 64 painting", 1);
+        AddItem("Mario 64 painting", 1);
+
+        AddItem("NOOT NOOT", 2);
+
+        GameObject.Find("Player 1").GetComponent<SkillManager>().enabled = true;
+        GameObject.Find("Player 2").GetComponent<SkillManager>().enabled = true;
     }
 
     private void Update()
     {
         if(Input.GetKey(KeyCode.F))
         {
+            SceneManager.LoadScene("Phase_2");          
+        }
+
+        if (Input.GetKey(KeyCode.C))
+        {
             PrintPlayerInventories();
-            SceneManager.LoadScene("gay");
-            
         }
     }
 }

@@ -10,7 +10,7 @@ public class Collectibles : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            int playerNumber = other.GetComponent<PlayerController>().playerNum; 
+            int playerNumber = other.GetComponent<Phase1PlayerController>().playerNum; 
 
             Inventory.AddItem(itemName, playerNumber);
 

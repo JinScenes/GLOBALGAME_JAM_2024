@@ -10,8 +10,23 @@ public class SkillManager : MonoBehaviour
 
     private void Start()
     {
-        AddSkillToList("Troll Face");
-        AddSkillToList("I like trains");
+        string[] plrItems = isPlayer1 ? Inventory.PlayerItems.player1Items : Inventory.PlayerItems.player2Items;
+       
+        foreach (string itemName in plrItems)
+        {
+            if (string.IsNullOrEmpty(itemName)){
+                continue;
+            }
+
+            print("Checking " + itemName);
+            AddSkillToList(itemName);
+        }
+
+        //for (int i = 0; i < plrItems.Length; i++)
+        //{
+        //    AddAndConvertStringToSkill(plrItems[i]);
+        //    print("CHECKING" + plrItems[i]);
+        //}
     }
 
     private void Update()
@@ -51,7 +66,13 @@ public class SkillManager : MonoBehaviour
 
     void AddSkillToList(string skillName)
     {
-        skillList.Add(AddAndConvertStringToSkill(skillName));
+        Skill newSkill = AddAndConvertStringToSkill(skillName);
+        if (newSkill != null){
+            skillList.Add(newSkill);
+            print("Converted " + skillName);
+        }
+        
+       
     }
 
     Skill AddAndConvertStringToSkill(string skillName)
@@ -61,9 +82,10 @@ public class SkillManager : MonoBehaviour
             case "I like trains":
                 return gameObject.AddComponent<TestSkill>();
             case "Mario 64 painting":
-                return gameObject.AddComponent<TestSkill>();
+                print("ADDEDDDDDDDD");
+                return gameObject.AddComponent<Mario64Painting>();
             case "NOOT NOOT":
-                return gameObject.AddComponent<TestSkill>();
+                return gameObject.AddComponent<NOOTNOOT>();
             case "Troll Face":
                 return gameObject.AddComponent<TestSkill>();
             case "Bing Chilling":
@@ -75,6 +97,7 @@ public class SkillManager : MonoBehaviour
             case "PEPE PUNCHING":
                 return gameObject.AddComponent<TestSkill>();
             default:
+                print(skillName + " Doesn't exist!");
                 return null;
         }
     }
