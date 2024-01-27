@@ -93,7 +93,7 @@ public class SkillManager : MonoBehaviour
             case "SIGMA":
                 return gameObject.AddComponent<TestSkill>();
             case "GOAT":
-                return gameObject.AddComponent<TestSkill>();
+                return gameObject.AddComponent<GOAT>();
             case "PEPE PUNCHING":
                 return gameObject.AddComponent<TestSkill>();
             default:

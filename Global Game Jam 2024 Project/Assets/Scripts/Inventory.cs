@@ -61,6 +61,7 @@ public class Inventory : MonoBehaviour
         AddItem("Mario 64 painting", 1);
 
         AddItem("NOOT NOOT", 2);
+        AddItem("GOAT", 2);
 
         GameObject.Find("Player 1").GetComponent<SkillManager>().enabled = true;
         GameObject.Find("Player 2").GetComponent<SkillManager>().enabled = true;
