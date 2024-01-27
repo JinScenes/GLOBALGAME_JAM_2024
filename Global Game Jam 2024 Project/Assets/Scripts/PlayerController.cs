@@ -4,7 +4,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float jumpForce;
     [SerializeField] private float movementSpeed;
-    [SerializeField] private bool isPlayer1 = true;
+    public bool isPlayer1 = true;
+    private bool allowInput = true;
 
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask passThroughLayer;
@@ -52,7 +53,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        HandleMovement();
+        if (allowInput)
+        {
+            HandleMovement();
+        }
     }
 
     private void HandleJumpInput()
@@ -85,7 +89,25 @@ public class PlayerController : MonoBehaviour
     private void HandleMovement()
     {
         float horizontalInput = Input.GetAxis(horizontalInputAxis);
+        if (horizontalInput > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 90, 0);
+        }
+        else if (horizontalInput < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, -90, 0);
+        }
+
         rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, rb.velocity.z);
+    }
+
+    public void EnableInput(bool enable)
+    {
+        allowInput = enable;
+        if (!enable)
+        {
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        }
     }
 
     private void OnCollisionEnter(Collision other)

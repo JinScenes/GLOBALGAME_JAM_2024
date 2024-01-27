@@ -20,6 +20,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.CompareTag("DeathZone"))
         {
+            Respawn();
             TakeLife(1);
         }
     }
@@ -36,8 +37,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        Respawn();
-        currentLives = lives;
+        Destroy(gameObject);
     }
 
     private void Respawn()
