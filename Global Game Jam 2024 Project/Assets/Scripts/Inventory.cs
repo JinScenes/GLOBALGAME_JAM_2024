@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -55,5 +56,15 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKey(KeyCode.F))
+        {
+            PrintPlayerInventories();
+            SceneManager.LoadScene("gay");
+            
+        }
     }
 }
