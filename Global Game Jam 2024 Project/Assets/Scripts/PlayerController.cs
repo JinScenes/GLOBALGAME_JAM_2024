@@ -4,7 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float jumpForce;
     [SerializeField] private float movementSpeed;
-    [SerializeField] private bool isPlayer1 = true;
+    [SerializeField] public bool isPlayer1 = true;
 
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask passThroughLayer;

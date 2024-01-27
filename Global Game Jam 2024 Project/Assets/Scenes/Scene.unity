@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 817661737}
   - component: {fileID: 817661736}
   - component: {fileID: 817661742}
+  - component: {fileID: 817661743}
   m_Layer: 7
   m_Name: Player 2
   m_TagString: Player
@@ -468,6 +469,12 @@ MonoBehaviour:
   jumpForce: 7
   movementSpeed: 5
   isPlayer1: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  passThroughLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!54 &817661737
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -598,6 +605,20 @@ MonoBehaviour:
   lives: 3
   respawnPointPlayer1: {fileID: 1692695204}
   respawnPointPlayer2: {fileID: 1273256021}
+--- !u!114 &817661743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817661735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05592b63875450641ab6f7c362b79fa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer1: 0
+  skillList: []
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,6 +1063,7 @@ GameObject:
   - component: {fileID: 1596301195}
   - component: {fileID: 1596301194}
   - component: {fileID: 1596301200}
+  - component: {fileID: 1596301201}
   m_Layer: 7
   m_Name: Player 1
   m_TagString: Player
@@ -1064,6 +1086,12 @@ MonoBehaviour:
   jumpForce: 7
   movementSpeed: 5
   isPlayer1: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  passThroughLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!54 &1596301195
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1194,6 +1222,20 @@ MonoBehaviour:
   lives: 3
   respawnPointPlayer1: {fileID: 1692695204}
   respawnPointPlayer2: {fileID: 1273256021}
+--- !u!114 &1596301201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596301193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05592b63875450641ab6f7c362b79fa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer1: 1
+  skillList: []
 --- !u!1 &1692695203
 GameObject:
   m_ObjectHideFlags: 0

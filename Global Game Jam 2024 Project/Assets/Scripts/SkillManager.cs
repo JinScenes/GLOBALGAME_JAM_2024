@@ -16,37 +16,37 @@ public class SkillManager : MonoBehaviour
 
     private void Update()
     {
-        if(isPlayer1 == true)
+        if (isPlayer1 == true)
         {
             if (Input.GetKeyDown("j"))
             {
-                skillList[1].UseSkill();
+                skillList[0].UseSkill();
             }
             else if (Input.GetKeyDown("k"))
             {
-                skillList[2].UseSkill();
+                skillList[1].UseSkill();
             }
             else if (Input.GetKeyDown("l"))
             {
-                skillList[3].UseSkill();
+                skillList[2].UseSkill();
             }
         }
         else
         {
             if (Input.GetKeyDown("[1]"))
             {
-                skillList[1].UseSkill();
+                skillList[0].UseSkill();
             }
             else if (Input.GetKeyDown("[2]"))
             {
-                skillList[2].UseSkill();
+                skillList[1].UseSkill();
             }
             else if (Input.GetKeyDown("[3]"))
             {
-                skillList[3].UseSkill();
+                skillList[2].UseSkill();
             }
         }
-       
+
     }
 
     void AddSkillToList(string skillName)
