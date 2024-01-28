@@ -57,17 +57,25 @@ public class Inventory : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
-        AddItem("SIGMA", 1);
-        AddItem("I like trains", 1);
+        //AddItem("SIGMA", 1);
+        //AddItem("I like trains", 1);
 
-        AddItem("NOOT NOOT", 2);
-        AddItem("GOAT", 2);
+        //AddItem("NOOT NOOT", 2);
+        //AddItem("GOAT", 2);
 
         Scene scene = SceneManager.GetActiveScene();
         if(scene.name == "Phase_2")
         {
             GameObject.Find("Player 1").GetComponent<SkillManager>().enabled = true;
             GameObject.Find("Player 2").GetComponent<SkillManager>().enabled = true;
+        }
+        else
+        {
+            //AddItem("SIGMA", 1);
+            //AddItem("I like trains", 1);
+
+            //AddItem("NOOT NOOT", 2);
+            //AddItem("GOAT", 2);
         }
 
     }
