@@ -672,6 +672,7 @@ MonoBehaviour:
   movementSpeed: 5
   groundCheckDistance: 0.51
   gravityMultiplier: 2.5
+  damagePercentage: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -803,7 +804,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e584f86d28cceae4d8d2f183a4f9032e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 3
   respawnPointPlayer1: {fileID: 1692695204}
   respawnPointPlayer2: {fileID: 1273256021}
 --- !u!114 &817661743
@@ -836,6 +836,7 @@ MonoBehaviour:
   pushCooldown: 2
   reflectionDuration: 0.4
   reflectCooldown: 2
+  pushDamage: 10
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -1715,10 +1716,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdcd10d8eb421046beb7555913c4030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushForce: 15
+  pushForce: 6
   pushCooldown: 2
   reflectionDuration: 0.4
   reflectCooldown: 2
+  pushDamage: 20
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -1739,7 +1741,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e584f86d28cceae4d8d2f183a4f9032e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 3
   respawnPointPlayer1: {fileID: 1692695204}
   respawnPointPlayer2: {fileID: 1273256021}
 --- !u!114 &1551206670
@@ -1758,6 +1759,7 @@ MonoBehaviour:
   movementSpeed: 8
   groundCheckDistance: 0.51
   gravityMultiplier: 20
+  damagePercentage: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -1917,6 +1919,7 @@ MonoBehaviour:
   movementSpeed: 5
   groundCheckDistance: 0.51
   gravityMultiplier: 2.5
+  damagePercentage: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -2048,7 +2051,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e584f86d28cceae4d8d2f183a4f9032e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 3
   respawnPointPlayer1: {fileID: 1692695204}
   respawnPointPlayer2: {fileID: 1273256021}
 --- !u!114 &1596301201
@@ -2081,6 +2083,7 @@ MonoBehaviour:
   pushCooldown: 2
   reflectionDuration: 0.4
   reflectCooldown: 2
+  pushDamage: 10
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -2289,10 +2292,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdcd10d8eb421046beb7555913c4030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushForce: 15
+  pushForce: 6
   pushCooldown: 2
   reflectionDuration: 0.4
   reflectCooldown: 2
+  pushDamage: 20
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -2313,7 +2317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e584f86d28cceae4d8d2f183a4f9032e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 3
   respawnPointPlayer1: {fileID: 1692695204}
   respawnPointPlayer2: {fileID: 1273256021}
 --- !u!114 &1787071536
@@ -2332,6 +2335,7 @@ MonoBehaviour:
   movementSpeed: 8
   groundCheckDistance: 0.51
   gravityMultiplier: 20
+  damagePercentage: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
