@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3411511730555436693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4230608882412311071}
+  - component: {fileID: 5477836619443016034}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4230608882412311071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3411511730555436693}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.096097134, y: 2.5786052, z: -0.10568909}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5477836619443016034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3411511730555436693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fea53e03f3e05442affa8d20d190f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundGroups:
+  - groupName: Meme Sounds
+    sounds:
+    - audioName: bing chilling (earrape)
+      clip: {fileID: 8300000, guid: 5c755b0aa34f76f4fa8987fe2a0111f8, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: gigachad
+      clip: {fileID: 8300000, guid: 0cc686d712ad634479f8dd57c245a4d6, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Goat Remix Taylor Swift
+      clip: {fileID: 8300000, guid: 330d2cf3572eb0f4db265a53c305df17, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: I like trains
+      clip: {fileID: 8300000, guid: 82f58c5642729fa4b9b913f6f05f6e50, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Mario 64 Painting
+      clip: {fileID: 8300000, guid: e3681b4dd85984747bd18ff7e81ebb8b, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Mario WAHHHH
+      clip: {fileID: 8300000, guid: ecb1694a70668394f88854e2e1c760ac, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: TROLOLOLOL
+      clip: {fileID: 8300000, guid: 09cbff73e64b14f4cb47a690600410f7, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: NOOT
+      clip: {fileID: 8300000, guid: 09c3f740a15a74c48853cb7c7f7f91e9, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Punch
+      clip: {fileID: 8300000, guid: f286fe0e268129a4db365a375874c121, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Train Noise
+      clip: {fileID: 8300000, guid: 0c847b7b2b643114f8840ff3dbe510ec, type: 3}
+      type: 1
+      is3D: 0
