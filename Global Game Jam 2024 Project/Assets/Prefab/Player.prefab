@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 6757209895505915761}
   - component: {fileID: 4323632956757933662}
   - component: {fileID: 7223612153078842969}
-  - component: {fileID: 5793438599196875052}
+  - component: {fileID: 3547693741804630561}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -265,7 +265,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.8
   m_Center: {x: 0, y: -0.07, z: 0.6}
---- !u!114 &5793438599196875052
+--- !u!114 &3547693741804630561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -279,7 +279,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 1
   moveSpeed: 7
-  grabDistance: 3
+  grabDistance: 2.5
+  throwForce: 10
   grabPoint: {fileID: 3649789880555524898}
   rotationSpeed: 720
 --- !u!1 &3039077913904317459

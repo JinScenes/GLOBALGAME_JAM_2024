@@ -13,7 +13,7 @@ public class Phase1PlayerController : MonoBehaviour
     [SerializeField] public Transform grabPoint; // A point representing where the grabbed player should be positioned
     [HideInInspector] public float rotationSpeed = 720f;
 
-    private PlayerController grabberController;
+    private Phase1PlayerController grabberController;
     private Vector3 moveDirection;
     private Rigidbody rb;
     private GameObject grabbedPlayer;
@@ -72,9 +72,9 @@ public class Phase1PlayerController : MonoBehaviour
 
         if (isGrabbing && Input.GetButtonUp(grabInput) && grabbedPlayer != null)
         {
-            counter++; 
+            counter++;
 
-            if(counter >= 2)
+            if (counter >= 2)
             {
                 ThrowPlayer();
             }
@@ -117,7 +117,7 @@ public class Phase1PlayerController : MonoBehaviour
         {
             if (hitCollider.gameObject != gameObject && hitCollider.gameObject.CompareTag("Player"))
             {
-                PlayerController otherPlayerController = hitCollider.gameObject.GetComponent<PlayerController>();
+                Phase1PlayerController otherPlayerController = hitCollider.gameObject.GetComponent<Phase1PlayerController>();
                 if (otherPlayerController != null && !otherPlayerController.beingGrab)
                 {
                     // Grab the player
@@ -156,14 +156,14 @@ public class Phase1PlayerController : MonoBehaviour
                 grabbedRigidbody.isKinematic = false;
 
                 // Throw in the direction the grabbing player is facing
-                Vector3 throwDirection = transform.forward + Vector3.up; 
+                Vector3 throwDirection = transform.forward + Vector3.up;
                 grabbedRigidbody.AddForce(throwDirection.normalized * throwForce, ForceMode.Impulse);
             }
 
             isGrabbing = false;
             beingGrab = false;
             grabbedPlayer = null;
-            escapePressCount = 0;
+            counter = 0;
 
         }
     }

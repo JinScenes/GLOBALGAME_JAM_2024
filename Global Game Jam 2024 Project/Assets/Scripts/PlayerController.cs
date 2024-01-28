@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
 
     private float jumpCooldown = 0.3f;
     private float lastJumpTime;
+    internal bool isGrabbing;
+    internal object grabbedPlayer;
+    internal Phase1PlayerController grabberController;
 
     private void Awake()
     {
