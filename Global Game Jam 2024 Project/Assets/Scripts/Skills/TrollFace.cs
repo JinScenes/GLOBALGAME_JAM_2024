@@ -30,6 +30,8 @@ public class TrollFace : Skill
     private IEnumerator ControlInversionRoutine()
     {
         isEffectActive = true;
+        AudioManager.instance.PlayAudios("TROLOLOLOL");
+
         GameObject trollfaceGameOBJ = Instantiate(Resources.Load("TrollfaceIMAGE"), GameObject.Find("Troll Face Transform").transform, false) as GameObject;
 
         PlayerController enemy = enemyPlayer.GetComponent<PlayerController>();

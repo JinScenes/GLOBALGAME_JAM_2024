@@ -14,7 +14,8 @@ public class GOATFire : MonoBehaviour
         if (enabled && !dealtDamage && other.gameObject == enemyPlayer)
         {
             dealtDamage = true;
-            print("HIT THE GUY");
+            other.gameObject.GetComponent<PlayerController>().TakeDamage(15f);
+            StartCoroutine(other.gameObject.GetComponent<PlayerComba>().ApplyPushForce(other.gameObject.GetComponent<PlayerComba>(), Vector3.right, false));
             Destroy(gameObject);
         }
     }

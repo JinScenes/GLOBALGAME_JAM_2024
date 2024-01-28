@@ -22,7 +22,8 @@ public class TrainFire : MonoBehaviour
                 if (!dealtDamageToEnemyPlayer){
                     dealtDamageToEnemyPlayer = true;
                     StartCoroutine(StartCDForEnemy());
-                    print("HIT ENEMY");
+                    other.gameObject.GetComponent<PlayerController>().TakeDamage(30f);
+                    StartCoroutine(other.gameObject.GetComponent<PlayerComba>().ApplyPushForce(other.gameObject.GetComponent<PlayerComba>(), Vector3.right, false));
                 }
             }
             else
@@ -30,7 +31,8 @@ public class TrainFire : MonoBehaviour
                 if (!dealtDamageToUser){
                     dealtDamageToUser = true;
                     StartCoroutine(StartCDForUser());
-                    print("HIT USER");
+                    other.gameObject.GetComponent<PlayerController>().TakeDamage(30f);
+                    StartCoroutine(other.gameObject.GetComponent<PlayerComba>().ApplyPushForce(other.gameObject.GetComponent<PlayerComba>(), Vector3.right, false));
                 }
                
             }

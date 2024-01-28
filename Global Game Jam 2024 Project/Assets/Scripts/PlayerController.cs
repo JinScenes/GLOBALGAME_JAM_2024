@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private bool allowInput = true;
     public bool isPlayer1 = true;
 
-    private float jumpCooldown = .05f;
+    private float jumpCooldown = .1f;
     private float lastJumpTime;
     private float speedModifier = .5f;
     private float controlInversionFactor = 1f;

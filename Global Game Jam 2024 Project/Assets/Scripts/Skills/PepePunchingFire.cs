@@ -55,8 +55,8 @@ public class PepePunchingFire : MonoBehaviour
         {
             attacking=false;
             dealtDamage = true;
-            print("HIT THE GUY");
-            //Destroy(gameObject);
+            other.gameObject.GetComponent<PlayerController>().TakeDamage(10f);
+            StartCoroutine(other.gameObject.GetComponent<PlayerComba>().ApplyPushForce(other.gameObject.GetComponent<PlayerComba>(), Vector3.right, false));
         }
     }
 
