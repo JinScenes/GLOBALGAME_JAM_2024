@@ -79,3 +79,11 @@ MonoBehaviour:
       clip: {fileID: 8300000, guid: 09c3f740a15a74c48853cb7c7f7f91e9, type: 3}
       type: 1
       is3D: 0
+    - audioName: Punch
+      clip: {fileID: 8300000, guid: f286fe0e268129a4db365a375874c121, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Train Noise
+      clip: {fileID: 8300000, guid: 0c847b7b2b643114f8840ff3dbe510ec, type: 3}
+      type: 1
+      is3D: 0
