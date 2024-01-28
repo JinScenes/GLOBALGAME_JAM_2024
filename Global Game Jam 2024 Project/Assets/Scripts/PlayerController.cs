@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask passThroughLayer;
 
     private Rigidbody rb;
+    private Animator anim;
 
     private string horizontalInputAxis;
     private string jumpInputAxis;
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -67,6 +69,7 @@ public class PlayerController : MonoBehaviour
             {
                 canJump = false;
             }
+            anim.SetBool("isJumping", true);
         }
     }
 
@@ -96,6 +99,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, -90, 0);
         }
+        anim.SetBool("IsRunning", Mathf.Abs(horizontalInput) > 0.1f);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -106,6 +110,7 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
             jumpCount = 0;
         }
+        anim.SetBool("isJumping", false);
     }
 
     public void ResetMovement()
