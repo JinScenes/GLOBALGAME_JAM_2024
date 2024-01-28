@@ -49,8 +49,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         HandleJumpInput();
-        
-        Debug.Log(jumpCount);
+    
     }
 
     private void FixedUpdate()

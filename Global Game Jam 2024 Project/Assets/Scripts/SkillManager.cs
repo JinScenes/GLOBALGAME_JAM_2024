@@ -80,7 +80,6 @@ public class SkillManager : MonoBehaviour
             case "I like trains":
                 return gameObject.AddComponent<Iliketrains>();
             case "Mario 64 painting":
-                print("ADDEDDDDDDDD");
                 return gameObject.AddComponent<Mario64Painting>();
             case "NOOT NOOT":
                 return gameObject.AddComponent<NOOTNOOT>();
@@ -93,7 +92,7 @@ public class SkillManager : MonoBehaviour
             case "GOAT":
                 return gameObject.AddComponent<GOAT>();
             case "PEPE PUNCHING":
-                return gameObject.AddComponent<TestSkill>();
+                return gameObject.AddComponent<PepePunching>();
             default:
                 print(skillName + " Doesn't exist!");
                 return null;
