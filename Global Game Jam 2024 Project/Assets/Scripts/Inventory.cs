@@ -58,7 +58,7 @@ public class Inventory : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         AddItem("Mario 64 painting", 1);
-        AddItem("Mario 64 painting", 1);
+        AddItem("I like trains", 1);
 
         AddItem("NOOT NOOT", 2);
         AddItem("GOAT", 2);
