@@ -78,7 +78,7 @@ public class SkillManager : MonoBehaviour
         switch (skillName)
         {
             case "I like trains":
-                return gameObject.AddComponent<TestSkill>();
+                return gameObject.AddComponent<Iliketrains>();
             case "Mario 64 painting":
                 print("ADDEDDDDDDDD");
                 return gameObject.AddComponent<Mario64Painting>();

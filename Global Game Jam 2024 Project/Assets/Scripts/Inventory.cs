@@ -57,10 +57,10 @@ public class Inventory : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
-        AddItem("Troll Face", 1);
-        //AddItem("Mario 64 painting", 1);
+        AddItem("Mario 64 painting", 1);
+        AddItem("I like trains", 1);
 
-        AddItem("SIGMA", 2);
+        AddItem("NOOT NOOT", 2);
         AddItem("GOAT", 2);
 
         GameObject.Find("Player 1").GetComponent<SkillManager>().enabled = true;
