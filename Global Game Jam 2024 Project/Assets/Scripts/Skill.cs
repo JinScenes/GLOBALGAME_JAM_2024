@@ -11,6 +11,9 @@ public abstract class  Skill : MonoBehaviour
     public GameObject enemyPlayer;
     public GameObject skillStuff;
 
+    public float pushForce = 10f;
+    public Vector3 pushDir = Vector3.forward;
+
     public abstract void UseSkill();
 
     public IEnumerator StartCooldown()
@@ -42,4 +45,18 @@ public abstract class  Skill : MonoBehaviour
         skillStuff = GameObject.Find("SkillStuff");
 
     }
+
+    protected void ApplyPush()
+    {
+        if (enemyPlayer != null)
+        {
+            Rigidbody enemyRb = enemyPlayer.GetComponent<Rigidbody>();
+            if (enemyRb != null)
+            {
+                Vector3 force = pushDir.normalized * pushForce;
+                enemyRb.AddForce(force, ForceMode.Impulse);
+            }
+        }
+    }
+
 }

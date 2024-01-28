@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int lives = 3;
+    private int lives = 1;
     private int currentLives;
 
     public Transform respawnPointPlayer1;
