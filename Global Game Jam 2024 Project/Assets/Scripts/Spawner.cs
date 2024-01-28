@@ -7,13 +7,12 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject[] lootPrefab;
     [SerializeField] private int xPos = 0;
     [SerializeField] private int zPos = 0;
-    [SerializeField] public int totalLoots = 6;
+    [SerializeField] public int totalLoots = 20;
 
     protected const float lootSpawnTime = 0.2f;
     protected const float minDistanceBetweenLoots = 5f;
 
     private List<Vector3> spawnedLootPositions = new List<Vector3>();
-
 
     void Start()
     {
@@ -24,17 +23,15 @@ public class Spawner : MonoBehaviour
     {
         yield return new WaitForSeconds(lootSpawnTime);
 
-        while (spawnedLootPositions.Count < totalLoots)
+        for (int i = 0; i < lootPrefab.Length; i++)
         {
-            GameObject lootToSpawn = lootPrefab[0];
-
+            GameObject lootToSpawn = lootPrefab[i];
             bool positionValid = false;
             Vector3 spawnPosition = Vector3.zero;
 
             // Try to find a valid position for loot
             while (!positionValid)
             {
-
                 int randomXpos = Random.Range(-xPos, xPos) + (int)transform.position.x;
                 int randomZpos = Random.Range(-zPos, zPos) + (int)transform.position.z;
 
@@ -47,6 +44,9 @@ public class Spawner : MonoBehaviour
             // Instantiate loot at the valid position
             Instantiate(lootToSpawn, spawnPosition, Quaternion.identity);
             spawnedLootPositions.Add(spawnPosition);
+
+            // Ensure there's a delay between spawns for performance and visual effect
+            yield return new WaitForSeconds(lootSpawnTime);
         }
     }
 
@@ -61,5 +61,16 @@ public class Spawner : MonoBehaviour
             }
         }
         return true;
+    }
+
+    void OnDrawGizmos()
+    {
+        // Set the color of the Gizmos, making it semi-transparent
+        Gizmos.color = new Color(0, 1, 0, 0.5f);
+
+        // Draw a wireframe cube to represent the spawn area with Gizmos
+        // The center of the cube is the position of this GameObject
+        // The size of the cube is determined by xPos and zPos, doubled to represent full width and length
+        Gizmos.DrawWireCube(transform.position, new Vector3(xPos * 2, 1, zPos * 2));
     }
 }
