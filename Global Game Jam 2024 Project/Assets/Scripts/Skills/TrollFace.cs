@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TrollFace : Skill
@@ -11,6 +12,8 @@ public class TrollFace : Skill
 
     private void Awake()
     {
+        SetValues();
+        
         playerController = GetComponentInParent<PlayerController>();
     }
 
@@ -18,7 +21,11 @@ public class TrollFace : Skill
     {
         if (!isEffectActive && playerController != null)
         {
-            StartCoroutine(ControlInversionRoutine());
+            if (currentCD <= 0)
+            {
+                StartCoroutine(StartCooldown());
+                StartCoroutine(ControlInversionRoutine());
+            }
         }
     }
 
@@ -26,15 +33,16 @@ public class TrollFace : Skill
     {
         isEffectActive = true;
 
-        playerController.InvertControls(effectIntensity);
+        PlayerController enemy = enemyPlayer.GetComponent<PlayerController>();
+        enemy.InvertControls(effectIntensity);
 
         yield return new WaitForSeconds(effectDuration / 2f);
 
-        playerController.InvertControls(-effectIntensity);
+        enemy.InvertControls(-effectIntensity);
 
         yield return new WaitForSeconds(effectDuration / 2f);
 
-        playerController.InvertControls(1f);
+        enemy.InvertControls(effectIntensity);
         isEffectActive = false;
     }
 }
