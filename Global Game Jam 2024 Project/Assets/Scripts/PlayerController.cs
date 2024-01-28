@@ -51,7 +51,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         HandleJumpInput();
-        HandlePassThroughPlatform();
+
+        Debug.Log(jumpCount);
     }
 
     private void FixedUpdate()
@@ -77,18 +78,6 @@ public class PlayerController : MonoBehaviour
             {
                 canJump = false;
             }
-        }
-    }
-
-    private void HandlePassThroughPlatform()
-    {
-        if (Input.GetAxis(downInputAxis) < 0)
-        {
-            gameObject.layer = LayerMask.NameToLayer("PassThrough");
-        }
-        else
-        {
-            gameObject.layer = LayerMask.NameToLayer("Player");
         }
     }
 

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundGroups:
-  - groupName: 
+  - groupName: Meme Sounds
     sounds:
     - audioName: Bing Chilling Meme
       clip: {fileID: 8300000, guid: 5c755b0aa34f76f4fa8987fe2a0111f8, type: 3}

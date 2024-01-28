@@ -87,9 +87,9 @@ public class SkillManager : MonoBehaviour
             case "Troll Face":
                 return gameObject.AddComponent<TrollFace>();
             case "Bing Chilling":
-                return gameObject.AddComponent<SIGMA>();
-            case "SIGMA":
                 return gameObject.AddComponent<TestSkill>();
+            case "SIGMA":
+                return gameObject.AddComponent<SIGMA>();
             case "GOAT":
                 return gameObject.AddComponent<GOAT>();
             case "PEPE PUNCHING":

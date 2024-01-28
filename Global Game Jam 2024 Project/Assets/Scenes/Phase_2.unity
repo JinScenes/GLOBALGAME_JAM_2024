@@ -936,7 +936,7 @@ GameObject:
   - component: {fileID: 1298508258}
   - component: {fileID: 1298508257}
   - component: {fileID: 1298508256}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Top Right
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1041,7 +1041,7 @@ GameObject:
   - component: {fileID: 1402667921}
   - component: {fileID: 1402667920}
   - component: {fileID: 1402667919}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Top Left
   m_TagString: Ground
   m_Icon: {fileID: 0}
