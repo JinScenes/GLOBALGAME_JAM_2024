@@ -4,8 +4,9 @@ using UnityEngine;
 public class PlayerComba : MonoBehaviour
 {
     [SerializeField] private float pushForce;
-    [SerializeField] private float pushCooldown = 2.0f; // Cooldown duration for pushing
+    [SerializeField] private float pushCooldown = 2.0f;
     [SerializeField] private float reflectionDuration = 0.4f;
+    [SerializeField] private float reflectCooldown = 2.0f;
 
     public LayerMask playerLayer;
     private Rigidbody rb;
@@ -14,11 +15,13 @@ public class PlayerComba : MonoBehaviour
 
     private bool isPushing = false;
     private bool isReflecting = false;
-    private bool canPush = true;
     private bool isPushImmune = false;
 
+    private bool canPush = true;
+    private bool canReflect = true;
+
     public KeyCode pushKey;
-    public KeyCode reflectKey; // Key to activate reflection
+    public KeyCode reflectKey;
 
     [SerializeField] private Material normalMaterial;
     [SerializeField] private Material reflectingMaterial;
@@ -32,7 +35,6 @@ public class PlayerComba : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         playerRenderer = GetComponent<Renderer>();
 
-        // Check if components are found
         if (playerController == null)
         {
             Debug.LogError("PlayerController component not found on " + gameObject.name);
@@ -47,7 +49,7 @@ public class PlayerComba : MonoBehaviour
     private void Update()
     {
         HandleCombatInput();
-        if (Input.GetKeyDown(reflectKey))
+        if (Input.GetKeyDown(reflectKey) && canReflect)
         {
             StartCoroutine(HandleReflection());
         }
@@ -71,14 +73,19 @@ public class PlayerComba : MonoBehaviour
     private IEnumerator HandleReflection()
     {
         isReflecting = true;
-        playerRenderer.material = reflectingMaterial; // Change to reflecting material
-        playerController.EnableInput(false); // Disable movement
+        canReflect = false;
+        playerRenderer.material = reflectingMaterial;
+        playerController.EnableInput(false);
 
         yield return new WaitForSeconds(reflectionDuration);
 
         isReflecting = false;
-        playerRenderer.material = normalMaterial; // Revert to normal material
-        playerController.EnableInput(true); // Re-enable movement
+        playerRenderer.material = normalMaterial;
+        playerController.EnableInput(true);
+
+        yield return new WaitForSeconds(reflectCooldown - reflectionDuration);
+
+        canReflect = true;
     }
 
     private IEnumerator PushCooldown()
@@ -103,10 +110,9 @@ public class PlayerComba : MonoBehaviour
 
     private IEnumerator ApplyPushForce(PlayerComba otherPlayer, Vector3 pushDirection)
     {
-        // Disable input for the player being pushed
         otherPlayer.GetComponent<PlayerController>().EnableInput(false);
 
-        float pushDuration = 0.5f; // Duration of the push effect
+        float pushDuration = 0.5f;
         float timer = 0;
 
         while (timer < pushDuration && !isPushImmune)
@@ -118,7 +124,6 @@ public class PlayerComba : MonoBehaviour
             yield return null;
         }
 
-        // Re-enable input after the push
         otherPlayer.GetComponent<PlayerController>().EnableInput(true);
     }
 
