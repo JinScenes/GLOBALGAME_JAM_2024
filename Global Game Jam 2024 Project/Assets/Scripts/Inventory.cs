@@ -58,7 +58,7 @@ public class Inventory : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         AddItem("SIGMA", 1);
-        AddItem("I like trains", 1);
+        AddItem("Troll Face", 1);
 
         AddItem("NOOT NOOT", 2);
         AddItem("GOAT", 2);

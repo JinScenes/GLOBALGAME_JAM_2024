@@ -33,6 +33,7 @@ public class GOAT : Skill
 
     void Shoot()
     {
+        AudioManager.instance.PlayAudios("Goat Remix Taylor Swift");
         GameObject NOOT = Instantiate(Resources.Load("GOAT"), enemyPlayer.transform.position + enemyPlayer.gameObject.transform.up * offset, Quaternion.identity, skillStuff.transform) as GameObject;
         GOATFire NOOTFire = NOOT.GetComponent<GOATFire>();
 

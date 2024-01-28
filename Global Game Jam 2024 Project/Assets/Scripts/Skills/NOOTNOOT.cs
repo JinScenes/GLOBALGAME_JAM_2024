@@ -45,6 +45,7 @@ public class NOOTNOOT : Skill
 
     void ShootNOOT()
     {
+        AudioManager.instance.PlayAudios("NOOT");
         GameObject NOOT = Instantiate(Resources.Load("NOOT"), player.transform.position + player.gameObject.transform.up * offset, Quaternion.identity, skillStuff.transform) as GameObject;
         NOOT.transform.LookAt(enemyPlayer.transform.position);
         NOOTFIRE NOOTFire = NOOT.GetComponent<NOOTFIRE>();

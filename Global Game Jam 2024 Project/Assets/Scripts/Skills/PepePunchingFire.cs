@@ -34,6 +34,7 @@ public class PepePunchingFire : MonoBehaviour
 
     IEnumerator Punch()
     {
+        AudioManager.instance.PlayAudios("Punch");
         attacking = true;
         dealtDamage = false;
         canFollow = true;
