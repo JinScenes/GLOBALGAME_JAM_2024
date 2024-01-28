@@ -15,6 +15,7 @@ public class PlayerComba : MonoBehaviour
     private bool isPushing = false;
     private bool isReflecting = false;
     private bool canPush = true;
+    private bool isPushImmune = false;
 
     public KeyCode pushKey;
     public KeyCode reflectKey; // Key to activate reflection
@@ -56,6 +57,7 @@ public class PlayerComba : MonoBehaviour
     {
         if (Input.GetKeyDown(pushKey) && canPush)
         {
+            print("PUSHHHHHH");
             isPushing = true;
             CheckForOpponent();
             StartCoroutine(PushCooldown());
@@ -107,7 +109,7 @@ public class PlayerComba : MonoBehaviour
         float pushDuration = 0.5f; // Duration of the push effect
         float timer = 0;
 
-        while (timer < pushDuration)
+        while (timer < pushDuration && !isPushImmune)
         {
             Vector3 newPosition = otherPlayer.transform.position + pushDirection * pushForce * Time.deltaTime;
             otherPlayer.rb.MovePosition(newPosition);
@@ -120,6 +122,10 @@ public class PlayerComba : MonoBehaviour
         otherPlayer.GetComponent<PlayerController>().EnableInput(true);
     }
 
+    public void SetPushImmunity(bool state)
+    {
+        isPushImmune = state;
+    }
 
     private void ResolveCombatInteraction(PlayerComba otherPlayer)
     {

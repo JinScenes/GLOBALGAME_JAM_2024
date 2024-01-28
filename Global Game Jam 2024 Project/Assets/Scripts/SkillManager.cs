@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SkillManager : MonoBehaviour
@@ -64,18 +62,18 @@ public class SkillManager : MonoBehaviour
 
     }
 
-    void AddSkillToList(string skillName)
+    private void AddSkillToList(string skillName)
     {
         Skill newSkill = AddAndConvertStringToSkill(skillName);
-        if (newSkill != null){
+        if (newSkill != null)
+        {
             skillList.Add(newSkill);
             print("Converted " + skillName);
+            gameObject.layer = LayerMask.NameToLayer("Default");
         }
-        
-       
     }
 
-    Skill AddAndConvertStringToSkill(string skillName)
+    private Skill AddAndConvertStringToSkill(string skillName)
     {
         switch (skillName)
         {
@@ -87,9 +85,9 @@ public class SkillManager : MonoBehaviour
             case "NOOT NOOT":
                 return gameObject.AddComponent<NOOTNOOT>();
             case "Troll Face":
-                return gameObject.AddComponent<TestSkill>();
+                return gameObject.AddComponent<TrollFace>();
             case "Bing Chilling":
-                return gameObject.AddComponent<TestSkill>();
+                return gameObject.AddComponent<SIGMA>();
             case "SIGMA":
                 return gameObject.AddComponent<TestSkill>();
             case "GOAT":

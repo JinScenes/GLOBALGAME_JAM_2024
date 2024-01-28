@@ -4,11 +4,10 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float jumpForce;
     [SerializeField] private float movementSpeed;
-    public bool isPlayer1 = true;
-    private bool allowInput = true;
+    [SerializeField] private float groundCheckDistance = .1f;
+    [SerializeField] private float gravityMultiplier = 2.5f;
 
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private LayerMask passThroughLayer;
 
     private Rigidbody rb;
 
@@ -17,11 +16,14 @@ public class PlayerController : MonoBehaviour
     private string downInputAxis;
 
     private int jumpCount = 0;
-    private bool isGrounded = false;
+    
     private bool canJump = true;
+    private bool allowInput = true;
+    public bool isPlayer1 = true;
 
     private float jumpCooldown = 0.3f;
     private float lastJumpTime;
+    private float controlInversionFactor = 1f;
 
     private void Awake()
     {
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
             jumpInputAxis = "Jump_P2";
             downInputAxis = "Down_P2";
         }
+
         gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
@@ -53,6 +56,9 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        CheckGrounded();
+        ApplyGravity();
+
         if (allowInput)
         {
             HandleMovement();
@@ -88,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        float horizontalInput = Input.GetAxis(horizontalInputAxis);
+        float horizontalInput = Input.GetAxis(horizontalInputAxis) * controlInversionFactor;
         if (horizontalInput > 0)
         {
             transform.rotation = Quaternion.Euler(0, 90, 0);
@@ -109,22 +115,42 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
         }
     }
-
-    private void OnCollisionEnter(Collision other)
+    
+    private void CheckGrounded()
     {
-        if (other.gameObject.CompareTag("Ground"))
+        RaycastHit hit;
+
+        bool isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, groundCheckDistance, groundLayer);
+        Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, isGrounded ? Color.green : Color.red);
+
+        if (isGrounded)
         {
             canJump = true;
-            isGrounded = true;
             jumpCount = 0;
+        }
+        else
+        {
+            canJump = false;
+        }
+    }
+
+    private void ApplyGravity()
+    {
+        if (!canJump && rb.velocity.y < 0)
+        {
+            rb.AddForce(Vector3.down * gravityMultiplier, ForceMode.Acceleration);
         }
     }
 
     public void ResetMovement()
     {
         rb.velocity = Vector3.zero;
-        isGrounded = false;
         jumpCount = 0;
         canJump = true;
+    }
+
+    public void InvertControls(float intensity)
+    {
+        controlInversionFactor = intensity;
     }
 }
