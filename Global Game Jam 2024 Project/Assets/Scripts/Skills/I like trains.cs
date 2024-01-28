@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class Iliketrains : Skill
 {
-    public float speed = 32f;
+    public float speed = 40f;
     public float aliveTime = 8f;
     public float offset = 20f;
+    GameObject trainPlatform;
 
     private void Start()
     {
         SetValues();
-        //skillCD = 8f;
+        trainPlatform = GameObject.Find("TrainPlatform");
+        skillCD = 20f;
     }
     public override void UseSkill()
     {
         if (currentCD <= 0)
         {
-            currentCD = 1;
             StartCoroutine(StartCooldown());
 
             StartCoroutine(FireTrain());
-            Shoot();
 
         }
         else
@@ -35,20 +35,26 @@ public class Iliketrains : Skill
     {
         // Warnin before train comes
         print("Waiting for train!");
-        yield return new WaitForSeconds(0.1f);
+
+        SetPlatform(true);
+        yield return new WaitForSeconds(4f);
         Shoot();
+
+        yield return new WaitForSeconds(5);
+        SetPlatform(false);
     }
 
+    void SetPlatform(bool setBool)
+    {
+        trainPlatform.GetComponent<MeshRenderer>().enabled = setBool;
+        trainPlatform.GetComponent<BoxCollider>().enabled = setBool;
+    }
 
     void Shoot()
     {
-        GameObject NOOT = Instantiate(Resources.Load("sdfTrain"), 
-            GameObject.Find("TrainTransorm").transform, false) as GameObject;
-        NOOT.transform.position = Vector3.zero;
-        NOOT.transform.rotation = Quaternion.Euler(0,0,0);
+        GameObject NOOT = Instantiate(Resources.Load("sdfTrain"), GameObject.Find("TrainTransorm").transform, false) as GameObject;
         TrainFire NOOTFire = NOOT.GetComponent<TrainFire>();
 
-        print(NOOTFire);
         NOOTFire.enemyPlayer = enemyPlayer;
         NOOTFire.speed = speed;
         NOOTFire.aliveTime = aliveTime;
