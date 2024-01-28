@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     private float jumpCooldown = 0.1f;
     private float lastJumpTime;
+    private float speedModifier = .5f;
     private float controlInversionFactor = 1f;
 
     private void Awake()
@@ -90,7 +91,7 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, -90, 0);
         }
 
-        rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, rb.velocity.z);
+        rb.velocity = new Vector3(horizontalInput * movementSpeed * speedModifier, rb.velocity.y, rb.velocity.z);
     }
 
     public void EnableInput(bool enable)
@@ -133,6 +134,11 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector3.zero;
         jumpCount = 0;
         canJump = true;
+    }
+
+    public void ModifySpeed(float factor)
+    {
+        speedModifier *= factor;
     }
 
     public void InvertControls(float intensity)
