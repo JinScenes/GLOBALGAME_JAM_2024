@@ -35,7 +35,7 @@ public class Spawner : MonoBehaviour
                 int randomXpos = Random.Range(-xPos, xPos) + (int)transform.position.x;
                 int randomZpos = Random.Range(-zPos, zPos) + (int)transform.position.z;
 
-                spawnPosition = new Vector3(randomXpos, 0.5f, randomZpos);
+                spawnPosition = new Vector3(randomXpos, -1.5f, randomZpos);
 
                 // Check distance with existing loot positions
                 positionValid = IsPositionValid(spawnPosition);
