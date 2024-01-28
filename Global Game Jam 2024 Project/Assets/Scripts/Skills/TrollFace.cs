@@ -12,7 +12,6 @@ public class TrollFace : Skill
     private void Awake()
     {
         SetValues();
-        
         playerController = GetComponentInParent<PlayerController>();
     }
 
@@ -31,6 +30,7 @@ public class TrollFace : Skill
     private IEnumerator ControlInversionRoutine()
     {
         isEffectActive = true;
+        GameObject trollfaceGameOBJ = Instantiate(Resources.Load("TrollfaceIMAGE"), GameObject.Find("Troll Face Transform").transform, false) as GameObject;
 
         PlayerController enemy = enemyPlayer.GetComponent<PlayerController>();
         enemy.InvertControls(effectIntensity);
@@ -40,8 +40,9 @@ public class TrollFace : Skill
         enemy.InvertControls(-effectIntensity);
 
         yield return new WaitForSeconds(effectDuration / 2f);
-
+        
         enemy.InvertControls(effectIntensity);
+        Destroy(trollfaceGameOBJ);
         isEffectActive = false;
     }
 }
