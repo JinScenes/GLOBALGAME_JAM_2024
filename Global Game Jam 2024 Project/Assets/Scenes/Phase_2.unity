@@ -159,7 +159,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 77.42973, y: 1.72468, z: 17.983511}
+  m_Size: {x: 302.4748, y: 1.72468, z: 115.919815}
   m_Center: {x: 0, y: -3.0193882, z: 0}
 --- !u!4 &58290877
 Transform:
@@ -372,6 +372,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -497,6 +498,18 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0477e558fdeb93b45bba7c14e670eec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &352571146
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,6 +839,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+  allowInput: 1
   isPlayer1: 0
 --- !u!54 &817661737
 Rigidbody:
@@ -1807,6 +1821,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  allowInput: 1
   isPlayer1: 0
 --- !u!54 &1551206671
 Rigidbody:
@@ -1967,6 +1982,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+  allowInput: 1
   isPlayer1: 1
 --- !u!54 &1596301195
 Rigidbody:
@@ -2383,6 +2399,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  allowInput: 1
   isPlayer1: 1
 --- !u!54 &1787071537
 Rigidbody:
@@ -2610,6 +2627,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477836619443016034, guid: 40521ddb0b45db446b45d89f29d16525,
+        type: 3}
+      propertyPath: soundGroups.Array.data[0].sounds.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477836619443016034, guid: 40521ddb0b45db446b45d89f29d16525,
+        type: 3}
+      propertyPath: soundGroups.Array.data[0].sounds.Array.data[10].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2232075647e05ef468d9ecee72e2eec5, type: 3}
+    - target: {fileID: 5477836619443016034, guid: 40521ddb0b45db446b45d89f29d16525,
+        type: 3}
+      propertyPath: soundGroups.Array.data[0].sounds.Array.data[10].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477836619443016034, guid: 40521ddb0b45db446b45d89f29d16525,
+        type: 3}
+      propertyPath: soundGroups.Array.data[0].sounds.Array.data[10].audioName
+      value: Music
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

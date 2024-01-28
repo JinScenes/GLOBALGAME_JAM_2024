@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private int jumpCount = 0;
     
     private bool canJump = true;
-    private bool allowInput = true;
+    [HideInInspector] public bool allowInput = true;
     public bool isPlayer1 = true;
 
     private float jumpCooldown = .1f;
@@ -50,7 +50,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         HandleJumpInput();
-    
     }
 
     private void FixedUpdate()

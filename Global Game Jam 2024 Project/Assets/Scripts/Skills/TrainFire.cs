@@ -24,6 +24,7 @@ public class TrainFire : MonoBehaviour
                     StartCoroutine(StartCDForEnemy());
                     other.gameObject.GetComponent<PlayerController>().TakeDamage(30f);
                     StartCoroutine(other.gameObject.GetComponent<PlayerComba>().ApplyPushForce(other.gameObject.GetComponent<PlayerComba>(), Vector3.right, false));
+                    other.gameObject.GetComponent<PlayerController>().allowInput = true;
                 }
             }
             else

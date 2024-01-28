@@ -17,7 +17,7 @@ public class NOOTFIRE : MonoBehaviour
             dealtDamage = true;
             other.gameObject.GetComponent<PlayerController>().TakeDamage(15f);
             StartCoroutine(other.gameObject.GetComponent<PlayerComba>().ApplyPushForce(other.gameObject.GetComponent<PlayerComba>(), Vector3.right, false));
-
+            other.gameObject.GetComponent<PlayerController>().allowInput = true;
             Destroy(gameObject);
         }
     }

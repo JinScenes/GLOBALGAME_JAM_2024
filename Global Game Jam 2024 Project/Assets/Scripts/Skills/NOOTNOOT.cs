@@ -43,7 +43,7 @@ public class NOOTNOOT : Skill
         ShootNOOT();
     }
 
-    void ShootNOOT()
+    void ShootNOOT() 
     {
         AudioManager.instance.PlayAudios("NOOT");
         GameObject NOOT = Instantiate(Resources.Load("NOOT"), player.transform.position + player.gameObject.transform.up * offset, Quaternion.identity, skillStuff.transform) as GameObject;
