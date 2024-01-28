@@ -42,7 +42,9 @@ public class Iliketrains : Skill
 
     void Shoot()
     {
-        GameObject NOOT = Instantiate(Resources.Load("sdfTrain"), enemyPlayer.transform.position + enemyPlayer.gameObject.transform.forward * offset, Quaternion.identity, skillStuff.transform) as GameObject;
+        GameObject NOOT = Instantiate(Resources.Load("sdfTrain"), Vector3.zero, Quaternion.identity, GameObject.Find("TrainTransorm").transform) as GameObject;
+        NOOT.transform.position = Vector3.zero;
+        NOOT.transform.rotation = Quaternion.Euler(0,0,0);
         TrainFire NOOTFire = NOOT.GetComponent<TrainFire>();
 
         print(NOOTFire);

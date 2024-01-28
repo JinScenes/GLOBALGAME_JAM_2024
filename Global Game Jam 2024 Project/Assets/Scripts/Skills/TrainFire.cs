@@ -13,6 +13,12 @@ public class TrainFire : MonoBehaviour
     public float speed;
     public float aliveTime;
 
+    //private void Start()
+    //{
+    //    transform.position = Vector3.zero;
+    //    transform.rotation = Quaternion.Euler(0, 0, 0);
+    //}
+
     private void OnTriggerStay(Collider other)
     {
         if (enabled && other.gameObject.tag == "Player")
@@ -52,8 +58,8 @@ public class TrainFire : MonoBehaviour
 
     private void Update()
     {
-        transform.position += (Time.deltaTime * speed * transform.up) * -1;
+        transform.position += (Time.deltaTime * speed * transform.forward);
         aliveTime -= 1 * Time.deltaTime;
-        if (aliveTime < 0) { Destroy(gameObject); }
+        //if (aliveTime < 0) { Destroy(gameObject); }
     }
 }
