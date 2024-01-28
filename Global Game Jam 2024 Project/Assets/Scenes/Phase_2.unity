@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 58290876}
   m_Layer: 0
   m_Name: DeathArea
-  m_TagString: Untagged
+  m_TagString: DeathZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,7 +155,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -697,6 +697,7 @@ MonoBehaviour:
   pushForce: 15
   pushCooldown: 2
   reflectionDuration: 0.4
+  reflectCooldown: 2
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -1441,6 +1442,7 @@ MonoBehaviour:
   pushForce: 15
   pushCooldown: 2
   reflectionDuration: 0.4
+  reflectCooldown: 2
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -1802,6 +1804,7 @@ MonoBehaviour:
   pushForce: 15
   pushCooldown: 2
   reflectionDuration: 0.4
+  reflectCooldown: 2
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -2013,6 +2016,7 @@ MonoBehaviour:
   pushForce: 15
   pushCooldown: 2
   reflectionDuration: 0.4
+  reflectCooldown: 2
   playerLayer:
     serializedVersion: 2
     m_Bits: 128

@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
 
     private string horizontalInputAxis;
     private string jumpInputAxis;
-    private string downInputAxis;
 
     private int jumpCount = 0;
     
@@ -21,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool allowInput = true;
     public bool isPlayer1 = true;
 
-    private float jumpCooldown = 0.3f;
+    private float jumpCooldown = 0.1f;
     private float lastJumpTime;
     private float controlInversionFactor = 1f;
 
@@ -36,13 +35,11 @@ public class PlayerController : MonoBehaviour
         {
             horizontalInputAxis = "Horizontal_P1";
             jumpInputAxis = "Jump_P1";
-            downInputAxis = "Down_P1";
         }
         else
         {
             horizontalInputAxis = "Horizontal_P2";
             jumpInputAxis = "Jump_P2";
-            downInputAxis = "Down_P2";
         }
 
         gameObject.layer = LayerMask.NameToLayer("Player");
@@ -51,7 +48,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         HandleJumpInput();
-
+        
         Debug.Log(jumpCount);
     }
 
