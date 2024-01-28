@@ -9,14 +9,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public int playerNum;
     [SerializeField] public float moveSpeed = 7.0f;
     [SerializeField] public float grabDistance = 2.5f;
+    [SerializeField] public float throwForce = 10.0f;
     [SerializeField] public Transform grabPoint; // A point representing where the grabbed player should be positioned
     [HideInInspector] public float rotationSpeed = 720f;
 
-
+    private PlayerController grabberController;
     private Vector3 moveDirection;
     private Rigidbody rb;
     private GameObject grabbedPlayer;
     private bool isGrabbing = false;
+    private bool beingGrab = false;
+    private int counter = 0;
     private int escapePressCount = 0;
     private const int escapePressRequired = 5;
 
@@ -42,7 +45,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Only allow movement and grabbing if not currently grabbed by another player
-        if (!isGrabbing)
+        if (!beingGrab)
         {
             // Movement input
             float moveHorizontal = Input.GetAxisRaw(horizontalInput);
@@ -62,22 +65,36 @@ public class PlayerController : MonoBehaviour
             // Grab input
             if (Input.GetButtonDown(grabInput))
             {
-                Debug.Log("Try Grab");
+                //Debug.Log("Try Grab");
                 GrabPlayer();
             }
         }
-        else
+
+        if (isGrabbing && Input.GetButtonUp(grabInput) && grabbedPlayer != null)
         {
-            // Attempt to escape grab
+            counter++; 
+
+            if(counter >= 2)
+            {
+                ThrowPlayer();
+            }
+        }
+
+
+        // Attempt to escape grab
+        if (beingGrab)
+        {
             if (Input.GetButtonDown(escapeInput))
             {
                 escapePressCount++;
-                Debug.Log(escapePressCount + " to " + escapePressRequired);
+                Debug.Log(escapePressCount + " out of " + escapePressRequired);
+
                 if (escapePressCount >= escapePressRequired)
                 {
-
+                    Debug.Log("Try escape");
                     EscapeGrab();
                 }
+
             }
         }
     }
@@ -85,7 +102,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         // Move the player if not grabbed by another player
-        if (moveDirection.magnitude > 0.1f && !isGrabbing)
+        if (moveDirection.magnitude > 0.1f && !beingGrab)
         {
             rb.MovePosition(rb.position + moveDirection.normalized * moveSpeed * Time.fixedDeltaTime);
         }
@@ -94,35 +111,82 @@ public class PlayerController : MonoBehaviour
     void GrabPlayer()
     {
         // Implement logic to grab the nearest player
-        
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, grabDistance);
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.gameObject != gameObject && hitCollider.gameObject.CompareTag("Player"))
             {
                 PlayerController otherPlayerController = hitCollider.gameObject.GetComponent<PlayerController>();
-                if (otherPlayerController != null && !otherPlayerController.isGrabbing)
+                if (otherPlayerController != null && !otherPlayerController.beingGrab)
                 {
                     // Grab the player
                     grabbedPlayer = hitCollider.gameObject;
                     grabbedPlayer.transform.SetParent(grabPoint);
                     grabbedPlayer.transform.localPosition = Vector3.zero;
-                    grabbedPlayer.GetComponent<PlayerController>().isGrabbing = true;
+
+                    // Set this player as grabbing and the other player as being grabbed
+                    isGrabbing = true;
+                    otherPlayerController.beingGrab = true;
+
+                    // Store the grabber controller in the grabbed player
+                    otherPlayerController.grabberController = this;
+
                     break;
                 }
             }
         }
     }
 
-    public void EscapeGrab()
+    public void ThrowPlayer()
     {
-        // Release the grabbed player
         if (grabbedPlayer != null)
         {
+            // Reset the grabbed player's transform before detaching
+            grabbedPlayer.transform.localPosition = Vector3.zero;
+            grabbedPlayer.transform.localRotation = Quaternion.identity;
+
             grabbedPlayer.transform.SetParent(null);
-            grabbedPlayer.GetComponent<PlayerController>().isGrabbing = false;
+
+            // Reactivate the Rigidbody and ensure it's not kinematic
+            Rigidbody grabbedRigidbody = grabbedPlayer.GetComponent<Rigidbody>();
+
+            if (grabbedRigidbody != null)
+            {
+                grabbedRigidbody.isKinematic = false;
+
+                // Throw in the direction the grabbing player is facing
+                Vector3 throwDirection = transform.forward + Vector3.up; 
+                grabbedRigidbody.AddForce(throwDirection.normalized * throwForce, ForceMode.Impulse);
+            }
+
+            isGrabbing = false;
+            beingGrab = false;
             grabbedPlayer = null;
-            escapePressCount = 0; // Reset the escape press count
+            escapePressCount = 0;
+
+        }
+    }
+
+    public void EscapeGrab()
+    {
+        // Ensure this player is being grabbed and there is a grabber
+        if (beingGrab && grabberController != null)
+        {
+            // Release from the grabber
+            transform.SetParent(null);
+            beingGrab = false;
+            escapePressCount = 0;
+
+            // Reset the grabber's state
+            if (grabberController.grabbedPlayer == gameObject)
+            {
+                grabberController.grabbedPlayer = null;
+                grabberController.isGrabbing = false;
+            }
+
+            // Reset this player's grabber reference
+            grabberController = null;
         }
     }
 }
