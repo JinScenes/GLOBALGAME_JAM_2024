@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float movementSpeed;
     [SerializeField] private float groundCheckDistance = .1f;
     [SerializeField] private float gravityMultiplier = 2.5f;
+    public float damagePercentage = 0f;
 
     [SerializeField] private LayerMask groundLayer;
 
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private bool allowInput = true;
     public bool isPlayer1 = true;
 
-    private float jumpCooldown = 0.1f;
+    private float jumpCooldown = .05f;
     private float lastJumpTime;
     private float speedModifier = .5f;
     private float controlInversionFactor = 1f;
@@ -81,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        float horizontalInput = Input.GetAxis(horizontalInputAxis) * controlInversionFactor;
+        float horizontalInput = Input.GetAxis(horizontalInputAxis) * controlInversionFactor * speedModifier;
         if (horizontalInput > 0)
         {
             transform.rotation = Quaternion.Euler(0, 90, 0);
@@ -91,7 +92,13 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, -90, 0);
         }
 
-        rb.velocity = new Vector3(horizontalInput * movementSpeed * speedModifier, rb.velocity.y, rb.velocity.z);
+        rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, rb.velocity.z);
+    }
+
+    public void GetPushed(Vector3 force)
+    {
+        float forceMultiplier = 1f + (damagePercentage / 100f);
+        rb.AddForce(force * forceMultiplier, ForceMode.Impulse);
     }
 
     public void EnableInput(bool enable)
@@ -127,6 +134,11 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector3.down * gravityMultiplier, ForceMode.Acceleration);
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        damagePercentage += damage;
     }
 
     public void ResetMovement()

@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class PlayerComba : MonoBehaviour
 {
-    [SerializeField] private float pushForce;
+    public float pushForce;
     [SerializeField] private float pushCooldown = 2.0f;
     [SerializeField] private float reflectionDuration = 0.4f;
     [SerializeField] private float reflectCooldown = 2.0f;
+    public float pushDamage = 10;
 
     public LayerMask playerLayer;
     private Rigidbody rb;
@@ -48,11 +49,17 @@ public class PlayerComba : MonoBehaviour
 
     private void Update()
     {
-        HandleCombatInput();
+        //HandleCombatInput();
+        
         if (Input.GetKeyDown(reflectKey) && canReflect)
         {
             StartCoroutine(HandleReflection());
         }
+    }
+
+    private void FixedUpdate()
+    {
+        HandleCombatInput();
     }
 
     private void HandleCombatInput()
@@ -108,24 +115,27 @@ public class PlayerComba : MonoBehaviour
         }
     }
 
-    private IEnumerator ApplyPushForce(PlayerComba otherPlayer, Vector3 pushDirection)
+    public IEnumerator ApplyPushForce(PlayerComba otherPlayer, Vector3 pushDirection, bool isReflected)
+
     {
         otherPlayer.GetComponent<PlayerController>().EnableInput(false);
+        otherPlayer.GetComponent<PlayerController>().GetPushed(pushDirection * pushForce);
 
-        float pushDuration = 0.5f;
-        float timer = 0;
-
-        while (timer < pushDuration && !isPushImmune)
+        if (!isReflected)
         {
-            Vector3 newPosition = otherPlayer.transform.position + pushDirection * pushForce * Time.deltaTime;
-            otherPlayer.rb.MovePosition(newPosition);
-
-            timer += Time.deltaTime;
-            yield return null;
+            otherPlayer.GetComponent<PlayerController>().TakeDamage(pushDamage);
         }
 
+        Vector3 pushVector = pushDirection * pushForce;
+
+        otherPlayer.rb.velocity = pushVector;
+
+        yield return new WaitForSeconds(.2f);
+
+        otherPlayer.rb.velocity = new Vector3(0, otherPlayer.rb.velocity.y, 0);
         otherPlayer.GetComponent<PlayerController>().EnableInput(true);
     }
+
 
     public void SetPushImmunity(bool state)
     {
@@ -141,16 +151,18 @@ public class PlayerComba : MonoBehaviour
         {
             if (otherPlayer.isReflecting)
             {
-                StartCoroutine(ApplyPushForce(this, -pushDirection));
+                StartCoroutine(ApplyPushForce(this, -pushDirection, true));
+                GetComponent<PlayerController>().TakeDamage(pushDamage);
             }
             else
             {
-                StartCoroutine(ApplyPushForce(otherPlayer, pushDirection));
+                StartCoroutine(ApplyPushForce(otherPlayer, pushDirection, false));
             }
         }
 
         isPushing = false;
     }
+
 
 
     private void OnDrawGizmosSelected()

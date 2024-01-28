@@ -640,6 +640,7 @@ MonoBehaviour:
   movementSpeed: 5
   groundCheckDistance: 0.51
   gravityMultiplier: 2.5
+  damagePercentage: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -803,6 +804,8 @@ MonoBehaviour:
   pushForce: 15
   pushCooldown: 2
   reflectionDuration: 0.4
+  reflectCooldown: 2
+  pushDamage: 10
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -884,13 +887,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844108491}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -31.44, y: -3.6851583, z: 14.49}
   m_LocalScale: {x: 0.74367, y: 0.74367, z: 0.74367}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 223738537}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &896763445
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,7 +940,6 @@ GameObject:
   - component: {fileID: 1022906116}
   - component: {fileID: 1022906119}
   - component: {fileID: 1022906118}
-  - component: {fileID: 1022906117}
   m_Layer: 0
   m_Name: Eyes
   m_TagString: Untagged
@@ -960,27 +962,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1551206675}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!65 &1022906117
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022906115}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1022906118
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1432,7 +1413,6 @@ GameObject:
   - component: {fileID: 1498293057}
   - component: {fileID: 1498293060}
   - component: {fileID: 1498293059}
-  - component: {fileID: 1498293058}
   m_Layer: 0
   m_Name: Eyes
   m_TagString: Untagged
@@ -1455,27 +1435,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1787071532}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!65 &1498293058
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1498293056}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1498293059
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1576,9 +1535,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdcd10d8eb421046beb7555913c4030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushForce: 15
+  pushForce: 13
   pushCooldown: 2
   reflectionDuration: 0.4
+  reflectCooldown: 2
+  pushDamage: 10
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -1615,9 +1576,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 7
-  movementSpeed: 5
+  movementSpeed: 15
   groundCheckDistance: 0.51
   gravityMultiplier: 20
+  damagePercentage: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -1777,6 +1739,7 @@ MonoBehaviour:
   movementSpeed: 5
   groundCheckDistance: 0.51
   gravityMultiplier: 2.5
+  damagePercentage: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -1940,6 +1903,8 @@ MonoBehaviour:
   pushForce: 15
   pushCooldown: 2
   reflectionDuration: 0.4
+  reflectCooldown: 2
+  pushDamage: 10
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -2148,9 +2113,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdcd10d8eb421046beb7555913c4030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushForce: 15
+  pushForce: 13
   pushCooldown: 2
   reflectionDuration: 0.4
+  reflectCooldown: 2
+  pushDamage: 10
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -2187,9 +2154,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 7
-  movementSpeed: 5
+  movementSpeed: 15
   groundCheckDistance: 0.51
   gravityMultiplier: 20
+  damagePercentage: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8

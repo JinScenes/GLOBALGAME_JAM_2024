@@ -100,5 +100,8 @@ public class SkillManager : MonoBehaviour
         }
     }
 
+    private void PushingData()
+    {
 
+    }
 }
