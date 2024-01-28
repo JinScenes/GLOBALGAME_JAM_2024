@@ -18,6 +18,8 @@ public class Mario64ColliderHandle : MonoBehaviour
         {
             print("Touching enemy");
             enemyPlayer.transform.position = mario64TPObj.transform.position;
+            AudioManager.instance.PlayAudios("Mario 64 Painting");
+            AudioManager.instance.PlayAudios("Mario WAHHHH");
         }
     }
 }

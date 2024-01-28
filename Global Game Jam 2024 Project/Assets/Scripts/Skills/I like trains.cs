@@ -35,10 +35,12 @@ public class Iliketrains : Skill
     {
         // Warnin before train comes
         print("Waiting for train!");
+        AudioManager.instance.PlayAudios("Train noise");
 
         SetPlatform(true);
         yield return new WaitForSeconds(4f);
         Shoot();
+        AudioManager.instance.PlayAudios("I like trains");
 
         yield return new WaitForSeconds(5);
         SetPlatform(false);

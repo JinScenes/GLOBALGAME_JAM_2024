@@ -9,6 +9,7 @@ public class SIGMA : Skill
 
     private void Start()
     {
+        SetValues();
         playerComba = GetComponentInParent<PlayerComba>();
     }
 
@@ -16,7 +17,13 @@ public class SIGMA : Skill
     {
         if (playerComba != null)
         {
-            StartCoroutine(PushImmunityRoutine());
+            if (currentCD <= 0)
+            {
+                StartCoroutine(PushImmunityRoutine());
+                AudioManager.instance.PlayAudios("gigachad");
+
+            }
+           
         }
     }
 

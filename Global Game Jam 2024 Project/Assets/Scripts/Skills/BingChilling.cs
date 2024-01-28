@@ -17,6 +17,7 @@ public class BingChilling : Skill
         {
             StartCoroutine(ApplySlowToOpponent());
             StartCoroutine(StartCooldown());
+            AudioManager.instance.PlayAudios("bing chilling (earrape)");
         }
     }
 
