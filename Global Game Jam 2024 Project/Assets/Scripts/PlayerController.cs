@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask passThroughLayer;
 
     private Rigidbody rb;
+    private Animator animator;
 
     private string horizontalInputAxis;
     private string jumpInputAxis;
@@ -45,6 +46,8 @@ public class PlayerController : MonoBehaviour
             downInputAxis = "Down_P2";
         }
         gameObject.layer = LayerMask.NameToLayer("Player");
+
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
