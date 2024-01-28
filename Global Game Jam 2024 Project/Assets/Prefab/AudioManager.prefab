@@ -47,35 +47,35 @@ MonoBehaviour:
   soundGroups:
   - groupName: Meme Sounds
     sounds:
-    - audioName: Bing Chilling Meme
+    - audioName: bing chilling (earrape)
       clip: {fileID: 8300000, guid: 5c755b0aa34f76f4fa8987fe2a0111f8, type: 3}
       type: 1
       is3D: 0
-    - audioName: Sigma Meme
+    - audioName: gigachad
       clip: {fileID: 8300000, guid: 0cc686d712ad634479f8dd57c245a4d6, type: 3}
       type: 1
       is3D: 0
-    - audioName: Goat Remix Meme
+    - audioName: Goat Remix Taylor Swift
       clip: {fileID: 8300000, guid: 330d2cf3572eb0f4db265a53c305df17, type: 3}
       type: 1
       is3D: 0
-    - audioName: I Like Trains Meme
+    - audioName: I like trains
       clip: {fileID: 8300000, guid: 82f58c5642729fa4b9b913f6f05f6e50, type: 3}
       type: 1
       is3D: 0
-    - audioName: Mario Painting Meme
+    - audioName: Mario 64 Painting
       clip: {fileID: 8300000, guid: e3681b4dd85984747bd18ff7e81ebb8b, type: 3}
       type: 1
       is3D: 0
-    - audioName: Mario Scream
+    - audioName: Mario WAHHHH
       clip: {fileID: 8300000, guid: ecb1694a70668394f88854e2e1c760ac, type: 3}
       type: 1
       is3D: 0
-    - audioName: Troll Face Meme
+    - audioName: TROLOLOLOL
       clip: {fileID: 8300000, guid: 09cbff73e64b14f4cb47a690600410f7, type: 3}
       type: 1
       is3D: 0
-    - audioName: Noot Noot Meme
+    - audioName: NOOT
       clip: {fileID: 8300000, guid: 09c3f740a15a74c48853cb7c7f7f91e9, type: 3}
       type: 1
       is3D: 0
