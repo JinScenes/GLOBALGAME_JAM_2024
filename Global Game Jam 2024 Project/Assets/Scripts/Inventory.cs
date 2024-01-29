@@ -57,11 +57,11 @@ public class Inventory : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
-        AddItem("PEPE PUNCHING", 1);
-        AddItem("I like trains", 1);
+        //AddItem("PEPE PUNCHING", 1);
+        //AddItem("I like trains", 1);
 
-        AddItem("NOOT NOOT", 2);
-        AddItem("GOAT", 2);
+        //AddItem("NOOT NOOT", 2);
+        //AddItem("GOAT", 2);
 
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "Phase_2")
@@ -74,14 +74,6 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.F))
-        {
-            SceneManager.LoadScene("Phase_2");          
-        }
-
-        if (Input.GetKey(KeyCode.C))
-        {
-            PrintPlayerInventories();
-        }
+    
     }
 }

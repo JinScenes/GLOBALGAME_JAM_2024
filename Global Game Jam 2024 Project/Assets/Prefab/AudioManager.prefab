@@ -48,7 +48,7 @@ MonoBehaviour:
   - groupName: Meme Sounds
     sounds:
     - audioName: bing chilling (earrape)
-      clip: {fileID: 8300000, guid: 5c755b0aa34f76f4fa8987fe2a0111f8, type: 3}
+      clip: {fileID: 8300000, guid: 42c37bbb64ef01f4380dab2d52a5c617, type: 3}
       type: 1
       is3D: 0
     - audioName: gigachad

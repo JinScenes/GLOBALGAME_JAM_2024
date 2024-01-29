@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerComba : MonoBehaviour
 {
     public float pushForce;
-    [SerializeField] private float pushCooldown = 2.0f;
+    [SerializeField] private float pushCooldown = 1.0f;
     [SerializeField] private float reflectionDuration = 0.4f;
     [SerializeField] private float reflectCooldown = 2.0f;
     public float pushDamage = 10;
