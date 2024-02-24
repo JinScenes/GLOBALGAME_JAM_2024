@@ -803,7 +803,9 @@ PrefabInstance:
       value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2654713335656134247, guid: e22b78ad1bf9197438e380b064113a6a, type: 3}
+    - {fileID: -168051006817133204, guid: e22b78ad1bf9197438e380b064113a6a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -7146521406498821007, guid: e22b78ad1bf9197438e380b064113a6a,
