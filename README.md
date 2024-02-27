@@ -8,7 +8,7 @@ Jinbo Chuanyi Guan
 <br>
 Hsi-Wei Wen
 <br>
-JJ J Odunuyi
+Jotham J Odunuyi
 <br>
 Yani Ivanov 
 <br>
